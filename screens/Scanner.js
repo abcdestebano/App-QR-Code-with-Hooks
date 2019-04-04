@@ -15,7 +15,7 @@ import {
 import { CameraKitCameraScreen, } from 'react-native-camera-kit';
 
 
-const Scanner = () => {
+const Scanner = ({ navigation }) => {
   const [qrValue, setQrValue] = useState('')
   const [openScanner, setOpenScanner] = useState(false)
 
@@ -39,6 +39,7 @@ const Scanner = () => {
   const onBarcodeScan = qrValue => {
     setQrValue(qrValue)
     setOpenScanner(false)
+    if (qrValue) navigation.navigate('Hooks', { uuid: qrValue })
   }
 
   const onOpenScanner = () => {
